@@ -1,5 +1,6 @@
 # TurboClone
-Short description and motivation.
+
+My implementation from Alexandre Ruban's [Rebuilding turbo-rails Tutorial](https://hotrails.podia.com). Ruban has also published the [original source code of the tutorial](https://github.com/alexandreruban/rebuilding-turbo-rails).
 
 ## Usage
 How to use my plugin.
