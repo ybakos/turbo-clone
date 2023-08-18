@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id(article) %> ">
+<%= turbo_frame_tag article do %>
   <div>
     Article <%= "##{article.id}" %>
     &bull;
@@ -9,4 +9,4 @@
     <%= button_to 'Delete', article_path(article), method: :delete, form: { style: 'display: inline;' } %>
 
   </div>
-</turbo-frame>
+<% end %>
