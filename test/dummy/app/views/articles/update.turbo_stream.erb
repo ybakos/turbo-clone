@@ -1,1 +1,1 @@
-<%= turbo_stream.replace @article %>
+<%= turbo_stream.replace @article, partial: 'articles/article', locals: {article: @article} %>
