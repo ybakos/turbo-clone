@@ -1,7 +1,3 @@
 <%= turbo_stream.update Article.new, '' %>
 
-<turbo-stream target="articles" action="prepend">
-  <template>
-    <%= render partial: 'articles/article', locals: { article: @article }, formats: :html %>
-  </template>
-</turbo-stream>
+<%= turbo_stream.prepend 'articles', partial: 'articles/article', locals: { article: @article } %>

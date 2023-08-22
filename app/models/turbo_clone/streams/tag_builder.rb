@@ -14,6 +14,10 @@ module TurboClone::Streams
       action :update, target, content, **rendering, &block
     end
 
+    def prepend(target, content = nil, **rendering, &block)
+      action :prepend, target, content, **rendering, &block
+    end
+
     private
 
     def action(name, target, content = nil, **rendering, &block)
