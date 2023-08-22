@@ -1,1 +1,3 @@
-<%= turbo_stream.replace @article, partial: 'articles/article', locals: {article: @article} %>
+<%= turbo_stream.replace @article do %>
+  <%= render partial: 'articles/article', locals: {article: @article} %>
+<% end %>
