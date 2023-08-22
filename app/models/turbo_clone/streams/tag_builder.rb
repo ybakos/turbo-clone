@@ -44,7 +44,7 @@ module TurboClone::Streams
 
     def render_template(target, content = nil, **rendering, &block)
       if content
-        content
+        content.respond_to?(:to_partial_path) ? @view_context.render(partial: content, formats: :html) : content
       elsif block_given?
         @view_context.capture(&block)
       elsif rendering.any?
