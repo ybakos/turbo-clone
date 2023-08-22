@@ -1,3 +1,1 @@
-<%= turbo_stream.replace @article do %>
-  <%= render partial: 'articles/article', locals: {article: @article} %>
-<% end %>
+<%= turbo_stream.replace @article, "Hello World!" %>

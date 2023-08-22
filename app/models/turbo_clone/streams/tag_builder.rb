@@ -6,14 +6,14 @@ module TurboClone::Streams
       @view_context.formats |= [:html]
     end
 
-    def replace(target, **rendering, &block)
-      action :replace, target, **rendering, &block
+    def replace(target, content = nil, **rendering, &block)
+      action :replace, target, content, **rendering, &block
     end
 
     private
 
-    def action(name, target, **rendering, &block)
-      template = render_template(target, **rendering, &block)
+    def action(name, target, content = nil, **rendering, &block)
+      template = render_template(target, content, **rendering, &block)
       turbo_stream_action_tag(name, target: target, template: template)
     end
 
@@ -34,8 +34,10 @@ module TurboClone::Streams
       end
     end
 
-    def render_template(target, **rendering, &block)
-      if block_given?
+    def render_template(target, content = nil, **rendering, &block)
+      if content
+        content
+      elsif block_given?
         @view_context.capture(&block)
       elsif rendering.any?
         @view_context.render(**rendering, formats: :html)
