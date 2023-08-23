@@ -11,5 +11,18 @@ module TurboClone
         helper TurboClone::Engine.helpers
       end
     end
+
+    initializer "turbo.integration_test_request_encoding" do
+      ActiveSupport.on_load :action_dispatch_integration_test do
+        class ActionDispatch::RequestEncoder
+          class TurboStreamEncoder < IdentityEncoder
+            header = [Mime[:turbo_stream], Mime[:html]].join(",")
+            define_method(:accept_header) { header }
+          end
+
+          @encoders[:turbo_stream] = TurboStreamEncoder.new
+        end
+      end
+    end
   end
 end
