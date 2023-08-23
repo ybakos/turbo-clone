@@ -10,7 +10,7 @@ module TurboClone
       assert_response status
       assert_equal Mime[:turbo_stream], response.media_type
       selector = %(turbo-stream[action="#{action}"])
-      selector << %([target="#{target}"]) if target
+      selector << %([target="#{target.respond_to?(:to_key) ? dom_id(target) : target}"]) if target
       assert_select selector, count: 1
     end
   end
