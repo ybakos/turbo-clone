@@ -15,6 +15,14 @@ module TurboClone
       end
     end
 
+    initializer "turbo.renderer" do
+      ActiveSupport.on_load :action_controller do
+        ActionController::Renderers.add :turbo_stream do |turbo_streams_html, options|
+          turbo_streams_html
+        end
+      end
+    end
+
     initializer 'turbo.test_assertions' do
       ActiveSupport.on_load :active_support_test_case do
         include TurboClone::TestAssertions
