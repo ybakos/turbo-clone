@@ -13,3 +13,13 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
+
+module ActionViewTestCaseExtensions
+  def render(*args, **options, &block)
+    ApplicationController.render(*args, **options, &block)
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include ActionViewTestCaseExtensions
+end
