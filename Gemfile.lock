@@ -74,6 +74,7 @@ GEM
       tzinfo (~> 2.0)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     erubi (1.12.0)
@@ -143,6 +144,10 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (5.0.7)
+      redis-client (>= 0.9.0)
+    redis-client (0.16.0)
+      connection_pool
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -166,6 +171,7 @@ PLATFORMS
 DEPENDENCIES
   importmap-rails
   puma
+  redis
   sprockets-rails
   sqlite3
   turbo_clone!
