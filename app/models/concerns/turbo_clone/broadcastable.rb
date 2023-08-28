@@ -9,6 +9,7 @@ module TurboClone
     end
 
     def broadcast_append_to(*streamables, target: broadcast_target_default, **rendering)
+      TurboClone::StreamsChannel.broadcast_append_to(*streamables, target: target, **broadcast_rendering_with_defaults(rendering))
     end
 
     private
