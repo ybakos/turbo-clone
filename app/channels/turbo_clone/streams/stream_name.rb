@@ -1,6 +1,11 @@
 module TurboClone
   module Streams
     module StreamName
+
+      def signed_stream_name(streamables)
+        TurboClone.signed_stream_verifier.generate stream_name_from(streamables)
+      end
+
       def stream_name_from(streamables)
         if streamables.is_a?(Array)
           streamables.map { |streamable| stream_name_from(streamable) }.join(":")
